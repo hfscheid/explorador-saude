@@ -9,23 +9,44 @@ ferramenta:
     1. Série temporal
     1. Calculadora de colunas
 
+Para cada doença, baixamos a tabela:
+Local de residência ->
+Linha: segundo Reg Saúde (CIR)/Municíp Res
+Coluna: Notificações por Semana epidemiológica notific. 
+Período: 2024
+
 # Macro-etapas
 ## Arboviroses
 Dengue:
-- [ ] download/tratamento
+- [x] download/tratamento
 - [ ] rota
 - [ ] mapa calor
 - [ ] série temporal
 - [ ] calculadora de colunas
 
 Zika:
-- [ ] download/tratamento
+- [x] download/tratamento
 - [ ] rota
 - [ ] mapa calor
 - [ ] série temporal
 - [ ] calculadora de colunas
 
 Chikungunya:
+- [x] download/tratamento
+- [ ] rota
+- [ ] mapa calor
+- [ ] série temporal
+- [ ] calculadora de colunas
+
+# Outras doenças
+Febre Amarela:
+- [ ] download/tratamento
+- [ ] rota
+- [ ] mapa calor
+- [ ] série temporal
+- [ ] calculadora de colunas
+
+Chagas:
 - [ ] download/tratamento
 - [ ] rota
 - [ ] mapa calor
