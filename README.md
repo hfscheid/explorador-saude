@@ -19,21 +19,21 @@ Período: 2024
 ## Arboviroses
 Dengue:
 - [x] download/tratamento
-- [ ] rota
+- [x] rota
 - [ ] mapa calor
 - [ ] série temporal
 - [ ] calculadora de colunas
 
 Zika:
 - [x] download/tratamento
-- [ ] rota
+- [x] rota
 - [ ] mapa calor
 - [ ] série temporal
 - [ ] calculadora de colunas
 
 Chikungunya:
 - [x] download/tratamento
-- [ ] rota
+- [x] rota
 - [ ] mapa calor
 - [ ] série temporal
 - [ ] calculadora de colunas
