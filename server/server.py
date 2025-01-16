@@ -63,7 +63,6 @@ class ReqHandler(BaseHTTPRequestHandler):
         )
         df = pd.read_csv(f"../data/{self.tables[tablename]}", encoding="latin-1")
         municipios = df["Município"].copy()
-        df = df.drop(["Total", "Município", "CIR", "Em Branco"], axis=1)
         for column in df.columns:
             if "Semana" in column:
                 if init_column > column or end_column < column:
