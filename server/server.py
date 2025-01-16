@@ -13,7 +13,7 @@ class ReqHandler(BaseHTTPRequestHandler):
 
     def getSeries(self, query_params: dict[str, str]):
         tables = query_params.get('table', ['dengue'])
-        mun = query_params.get('mun', ['Divinópolis'])
+        mun = query_params.get('mun', ['Divinópolis'])[0]
         time_init = query_params.get('tinit', ['0'])[0]
         time_end = query_params.get('tend', ['53'])[0]
         series = {}
@@ -24,9 +24,8 @@ class ReqHandler(BaseHTTPRequestHandler):
                 time_end
             )
             index = municipios[municipios == mun].index[0]
-            weeks = seriesdf.loc[index, :].values
-            series['table'] = weeks
-
+            weeks = [int(x) for x in seriesdf.loc[index, :].values]
+            series[table] = weeks
         self.send_response(200)
         self.send_header('Content-type', 'application/json')
         self.end_headers()
@@ -58,18 +57,17 @@ class ReqHandler(BaseHTTPRequestHandler):
             encoding='latin-1'
         )
         municipios = df['Município'].copy()
-        df = df.drop(["Total", "Município", "CIR", "Em Branco"], axis=1)
         for column in df.columns:
             if "Semana" in column:
                 if init_column > column or end_column < column:
                     df = df.drop([column], axis=1)
+            else:
+                df = df.drop([column], axis=1)
         return municipios, df
 
     def do_GET(self):
         parsed_url = urlparse(self.path)
         query_params = parse_qs(parsed_url.query)
-        print(parsed_url.path)
-        print(query_params)
         if parsed_url.path == "/map":
             self.getMap(query_params)
         elif parsed_url.path == "/series":
