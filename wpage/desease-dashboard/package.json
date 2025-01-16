@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "antd": "^5.23.0",
+    "axios": "^1.7.9",
     "chart.js": "^4.4.7",
     "cra-template": "1.2.0",
     "leaflet": "^1.9.4",

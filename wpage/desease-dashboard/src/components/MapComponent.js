@@ -4,13 +4,22 @@ import L from 'leaflet';
 import geoJSONData from '../data/geojs.json';
 import { fetchRegionData } from '../services/api';
 
+function transformData(input) {
+    return input.reduce((result, { municipio, total }) => {
+        const municipios = municipio.split(','); // Split municipios by comma
+        municipios.forEach(city => {
+            result[city.trim()] = total; // Assign the total to each city
+        });
+        return result;
+    }, {});
+}
+
 function MapComponent() {
     const mapRef = useRef(null);
     const mapInstanceRef = useRef(null);
 
     useEffect(() => {
         if (!mapInstanceRef.current) {
-            // Initialize the map only once
             const map = L.map(mapRef.current, { center: [-18.9, -45.0], zoom: 6 });
 
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -18,6 +27,12 @@ function MapComponent() {
             }).addTo(map);
 
             fetchRegionData().then((regionData) => {
+                regionData = transformData(regionData);
+
+                // Handle outliers in data
+                regionData = handleOutliers(regionData);
+
+                // eslint-disable-next-line
                 const geojson = L.geoJson(geoJSONData, {
                     style: (feature) => ({
                         fillColor: getRegionColor(feature.properties.name, regionData),
@@ -38,6 +53,9 @@ function MapComponent() {
                         });
                     },
                 }).addTo(map);
+
+                // Add legend to the map
+                addLegend(map, regionData);
             });
 
             mapInstanceRef.current = map;
@@ -46,7 +64,66 @@ function MapComponent() {
 
     const getRegionColor = (regionName, regionData) => {
         const cases = regionData[regionName] || 0;
-        return cases > 150 ? '#ff0000' : cases > 50 ? '#ffa500' : '#03BD22';
+
+        const values = Object.values(regionData);
+        const minCases = Math.min(...values);
+        const maxCases = Math.max(...values);
+
+        // Normalize the cases value to a range of 0-1
+        const normalized = (cases - minCases) / (maxCases - minCases);
+
+        // Interpolate colors between blue (low) and red (high)
+        const r = Math.floor(normalized * 255);
+        const g = 0;
+        const b = Math.floor((1 - normalized) * 255);
+
+        return `rgb(${r}, ${g}, ${b})`;
+    };
+
+    const addLegend = (map, regionData) => {
+        const values = Object.values(regionData);
+        const minCases = Math.min(...values);
+        const maxCases = Math.max(...values);
+
+        const legend = L.control({ position: 'bottomright' });
+
+        legend.onAdd = () => {
+            const div = L.DomUtil.create('div', 'info legend');
+            const grades = [minCases, maxCases];
+            const labels = grades.map(
+                (value, index) =>
+                    `<i style="background: ${getRegionColor(
+                        index === 0 ? 'low' : 'high',
+                        { low: minCases, high: maxCases }
+                    )}"></i> ${value}`
+            );
+
+            div.innerHTML = labels.join('<br>');
+            return div;
+        };
+
+        legend.addTo(map);
+    };
+
+    const handleOutliers = (regionData) => {
+        const values = Object.values(regionData);
+        const q1 = getPercentile(values, 25);
+        const q3 = getPercentile(values, 75);
+        const iqr = q3 - q1; // Interquartile range
+        const upperLimit = q3 + 1.5 * iqr;
+
+        return Object.fromEntries(
+            Object.entries(regionData).map(([key, value]) => [
+                key,
+                value >= 0 && value <= upperLimit ? value : upperLimit, // Cap outliers to upper limit
+            ])
+        );
+    };
+
+    const getPercentile = (values, percentile) => {
+        const sorted = [...values].sort((a, b) => a - b);
+        const index = Math.ceil((percentile / 100) * sorted.length) - 1;
+        return sorted[index];
     };
 
     const highlightFeature = (e) => {
