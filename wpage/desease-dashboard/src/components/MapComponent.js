@@ -30,7 +30,7 @@ function MapComponent() {
                 regionData = transformData(regionData);
 
                 // Handle outliers in data
-                regionData = handleOutliers(regionData);
+                // regionData = handleOutliers(regionData);
 
                 // eslint-disable-next-line
                 const geojson = L.geoJson(geoJSONData, {
@@ -62,22 +62,45 @@ function MapComponent() {
         }
     }, []);
 
+    // const getRegionColor = (regionName, regionData) => {
+    //     const cases = regionData[regionName] || 0;
+
+    //     const values = Object.values(regionData);
+    //     const minCases = Math.min(...values);
+    //     const maxCases = Math.max(...values);
+
+    //     // Normalize the cases value to a range of 0-1
+    //     const normalized = (cases - minCases) / (maxCases - minCases);
+
+    //     // Interpolate colors between blue (low) and red (high)
+    //     const r = Math.floor(normalized * 255);
+    //     const g = 0;
+    //     const b = Math.floor((1 - normalized) * 255);
+
+    //     return `rgb(${r}, ${g}, ${b})`;
+    // };
+
     const getRegionColor = (regionName, regionData) => {
-        const cases = regionData[regionName] || 0;
+      const cases = regionData[regionName] || 0;
 
-        const values = Object.values(regionData);
-        const minCases = Math.min(...values);
-        const maxCases = Math.max(...values);
+      const values = Object.values(regionData).map(value => value || 1); // Vermeide log(0) durch Ersetzung von 0 durch 1
+      const minCases = Math.min(...values);
+      const maxCases = Math.max(...values);
 
-        // Normalize the cases value to a range of 0-1
-        const normalized = (cases - minCases) / (maxCases - minCases);
+      // Logarithmische Transformation der Fälle
+      const logCases = Math.log10(cases || 1); // Fallback für den Fall, dass `cases` 0 ist
+      const logMin = Math.log10(minCases || 1);
+      const logMax = Math.log10(maxCases || 1);
 
-        // Interpolate colors between blue (low) and red (high)
-        const r = Math.floor(normalized * 255);
-        const g = 0;
-        const b = Math.floor((1 - normalized) * 255);
+      // Normalisieren im logarithmischen Bereich
+      const normalized = logCases / logMax ;
 
-        return `rgb(${r}, ${g}, ${b})`;
+      // Interpolation der Farben zwischen Blau (niedrig) und Rot (hoch)
+      const r = Math.floor(normalized * 255);
+      const g = 0;
+      const b = Math.floor((1 - normalized) * 255);
+
+      return `rgb(${r}, ${g}, ${b})`;
     };
 
     const addLegend = (map, regionData) => {

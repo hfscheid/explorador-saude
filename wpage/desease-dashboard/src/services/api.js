@@ -9,7 +9,7 @@ export const fetchRegionData = async () => {
         const tinit = 0
         const tend = 53
         const response = await axios.get(`${API_BASE_URL}/map?table=${table}&tinit=${tinit}&tend=${tend}`);
-        console.log(JSON.stringify(response.data))
+        // console.log(JSON.stringify(response.data))
         return response.data;
     } catch (error) {
         console.error(`Error fetching region data: ${error.message}`);
@@ -19,28 +19,29 @@ export const fetchRegionData = async () => {
 
 // Fetch Chart Data
 export const fetchChartData = async () => {
-    return {
-        labels: ['2020', '2021', '2022'],
-        datasets: [
-            {
-                label: 'Dataset 1',
-                values: [100, 200, 300],
-                color: '#742774',
-            },
-            {
-                label: 'Dataset 2',
-                values: [150, 250, 350],
-                color: '#FF5733',
-            },
-        ],
-    };
+    // return {
+    //     labels: ['2020', '2021', '2022'],
+    //     datasets: [
+    //         {
+    //             label: 'Dataset 1',
+    //             values: [100, 200, 300],
+    //             color: '#742774',
+    //         },
+    //         {
+    //             label: 'Dataset 2',
+    //             values: [150, 250, 350],
+    //             color: '#FF5733',
+    //         },
+    //     ],
+    // };
     // eslint-disable-next-line
     try {
         const table = 'dengue';
         const mun = 'Divinópolis'
         const tinit = 0
         const tend = 53
-        const response = await axios.get(`${API_BASE_URL}/series?table=${table}&mun=${mun}&tinit=${tinit}&tend=${tend}`);
+        const response = await axios.get(`${API_BASE_URL}/series?table=${table}&table=chikungunya&mun=${mun}&tinit=${tinit}&tend=${tend}`);
+        console.log(JSON.stringify(response.data))
         return response.data;
     } catch (error) {
         console.error(`Error fetching Chart data: ${error.message}`);

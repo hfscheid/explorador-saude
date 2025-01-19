@@ -25,12 +25,14 @@ class ReqHandler(BaseHTTPRequestHandler):
         mun = query_params.get('mun', ['Divinópolis'])[0]
         time_init = query_params.get('tinit', ['0'])[0]
         time_end = query_params.get('tend', ['53'])[0]
-        series = {}
+        series = {'labels': [], 'datasets': []}
         for table in tables:
             municipios, seriesdf = self.filter_table(table, time_init, time_end)
+            series['labels'] = list(seriesdf.columns)
             index = municipios[municipios == mun].index[0]
             weeks = [int(x) for x in seriesdf.loc[index, :].values]
-            series[table] = weeks
+            series['datasets'].append({'label': table, 'values': weeks})
+        print(series)
         self.send_response(200)
         self.add_cors_headers()
         self.send_header("Content-type", "application/json")

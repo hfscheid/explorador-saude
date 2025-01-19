@@ -17,7 +17,7 @@ function ChartComponent({ containerStyle }) {
                 const datasets = data.datasets.map((dataset) => ({
                     label: dataset.label,
                     data: dataset.values,
-                    borderColor: dataset.color,
+                    borderColor: '#742774',
                     fill: false,
                 }));
 
@@ -42,8 +42,8 @@ function ChartComponent({ containerStyle }) {
             },
         },
         scales: {
-            x: { title: { display: true, text: 'Year' } },
-            y: { title: { display: true, text: 'Number of Cases' } },
+            x: { title: { display: true, text: 'Semana epidemiológica' } },
+            y: { title: { display: true, text: 'Número de casos' } },
         },
     };
 
