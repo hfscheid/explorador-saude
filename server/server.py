@@ -20,6 +20,15 @@ class ReqHandler(BaseHTTPRequestHandler):
         )
         self.send_header("Access-Control-Allow-Headers", "Content-Type, Authorization")
 
+    def send_tables(self):
+        self.send_response(200)
+        self.add_cors_headers()
+        self.send_header("Content-type", "application/json")
+        self.end_headers()
+        tables = json.loads('["dengue", "chikungunya", "zika"]')
+        # print(tables)
+        self.wfile.write(json.dumps(tables).encode("latin-1"))
+
     def getSeries(self, query_params: dict[str, str]):
         tables = query_params.get('table', ['dengue'])
         mun = query_params.get('mun', ['Divinópolis'])[0]
@@ -32,7 +41,7 @@ class ReqHandler(BaseHTTPRequestHandler):
             index = municipios[municipios == mun].index[0]
             weeks = [int(x) for x in seriesdf.loc[index, :].values]
             series['datasets'].append({'label': table, 'values': weeks})
-        print(series)
+        # print(series)
         self.send_response(200)
         self.add_cors_headers()
         self.send_header("Content-type", "application/json")
@@ -80,6 +89,8 @@ class ReqHandler(BaseHTTPRequestHandler):
             self.getMap(query_params)
         elif parsed_url.path == "/series":
             self.getSeries(query_params)
+        elif parsed_url.path == "/tables":
+            self.send_tables()
 
     def do_PUT(self):
         content_len = int(self.headers.get("Content-Length"))
