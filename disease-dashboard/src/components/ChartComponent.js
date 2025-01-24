@@ -38,7 +38,7 @@ function ChartComponent({ containerStyle }) {
     table: ["dengue"],
     tinit: "1",
     tend: "53",
-    mun: "Belo Horizonte",
+    mun: "Divinópolis",
   });
   const [municipalities, setMunicipalities] = useState([]);
 
