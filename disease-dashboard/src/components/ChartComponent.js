@@ -19,6 +19,8 @@ import {
 } from "@mui/material";
 import { fetchChartData } from "../services/fetchChartData";
 import { getMun } from "../services/getMun";
+import { getTables } from "../services/getTables";
+import rgbHex from 'rgb-hex';
 
 ChartJS.register(
   LineElement,
@@ -41,14 +43,20 @@ function ChartComponent({ containerStyle }) {
     mun: "Divinópolis",
   });
   const [municipalities, setMunicipalities] = useState([]);
+  const [tables, setTables] = useState([]);
 
   useEffect(() => {
     const fetchMunicipalities = async () => {
       const muns = await getMun();
       setMunicipalities(muns);
     };
+    const fetchTables = async () => {
+      const tables = await getTables();
+      setTables(tables)
+    };
 
     fetchMunicipalities();
+    fetchTables();
   }, []);
 
   useEffect(() => {
@@ -57,7 +65,11 @@ function ChartComponent({ containerStyle }) {
         const datasets = data.datasets.map((dataset) => ({
           label: dataset.label,
           data: dataset.values,
-          borderColor: "#742774",
+          borderColor: "#"+rgbHex(
+            Math.floor(Math.random() * 256),
+            Math.floor(Math.random() * 256),
+            Math.floor(Math.random() * 256)
+          ),
           fill: false,
         }));
 
@@ -123,20 +135,12 @@ function ChartComponent({ containerStyle }) {
               }
               renderValue={(selected) => selected.join(", ")}
             >
-              <MenuItem value="dengue">
-                <Checkbox checked={chartParams.table.indexOf("dengue") > -1} />
-                <ListItemText primary="Dengue" />
+            {tables.map((table) => (
+              <MenuItem key={table} value={table}>
+                <Checkbox checked={chartParams.table.indexOf(table) > -1} />
+                <ListItemText primary={table} />
               </MenuItem>
-              <MenuItem value="chikungunya">
-                <Checkbox
-                  checked={chartParams.table.indexOf("chikungunya") > -1}
-                />
-                <ListItemText primary="Chikungunya" />
-              </MenuItem>
-              <MenuItem value="zika">
-                <Checkbox checked={chartParams.table.indexOf("zika") > -1} />
-                <ListItemText primary="Zika" />
-              </MenuItem>
+            ))}
             </Select>
           </FormControl>
           <Select

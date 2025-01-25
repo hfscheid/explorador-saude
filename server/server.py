@@ -7,9 +7,10 @@ import pandas as pd
 
 class ReqHandler(BaseHTTPRequestHandler):
     tables = {
-        "dengue": "dengue-2024-municipios.csv",
-        "chikungunya": "chikungunya-2024-municipios.csv",
-        "zika": "dengue-2024-municipios.csv",
+        "dengue": "doencas/dengue-2024-municipios.csv",
+        "chikungunya": "doencas/chikungunya-2024-municipios.csv",
+        "zika": "doencas/zika-2024-municipios.csv",
+        "febre amarela": "doencas/febreamarela-2024-municipios.csv",
     }
 
     def add_cors_headers(self):
@@ -25,9 +26,18 @@ class ReqHandler(BaseHTTPRequestHandler):
         self.add_cors_headers()
         self.send_header("Content-type", "application/json")
         self.end_headers()
-        tables = json.loads('["dengue", "chikungunya", "zika"]')
+        tables = json.loads('["dengue", "chikungunya", "zika", "febre amarela"]')
         # print(tables)
         self.wfile.write(json.dumps(tables).encode("latin-1"))
+
+    def send_muns(self):
+        with open('../data/municipios.json', 'r') as f:
+            data = json.loads(f.read())
+        self.send_response(200)
+        self.add_cors_headers()
+        self.send_header("Content-type", "application/json")
+        self.end_headers()
+        self.wfile.write(json.dumps(data).encode("latin-1"))
 
     def getSeries(self, query_params: dict[str, str]):
         tables = query_params.get('table', ['dengue'])
@@ -91,6 +101,8 @@ class ReqHandler(BaseHTTPRequestHandler):
             self.getSeries(query_params)
         elif parsed_url.path == "/tables":
             self.send_tables()
+        elif parsed_url.path == "/muns":
+            self.send_muns()
 
     def do_PUT(self):
         content_len = int(self.headers.get("Content-Length"))

@@ -3,6 +3,15 @@ import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import geoJSONData from "../data/geojs.json";
 import { fetchRegionData } from "../services/fetchRegionData";
+import {
+  Select,
+  MenuItem,
+  InputLabel,
+  FormControl,
+  Checkbox,
+  ListItemText,
+} from "@mui/material";
+import { getTables } from "../services/getTables";
 
 function transformData(input) {
   return input.reduce((result, { municipio, total }) => {
@@ -17,12 +26,21 @@ function transformData(input) {
 function MapComponent() {
   const mapRef = useRef(null);
   const mapInstanceRef = useRef(null);
-
   const [mapParams, setMapParams] = useState({
-    table: "",
-    tinit: "",
-    tend: "",
+    table: "dengue",
+    tinit: "1",
+    tend: "53",
   });
+  const [tables, setTables] = useState([]);
+  const weeks = Array.from({ length: 53 }, (_, i) => i + 1);
+
+  useEffect(() => {
+    const fetchTables = async () => {
+      const tables = await getTables();
+      setTables(tables)
+    };
+    fetchTables();
+  }, []);
 
   useEffect(() => {
     if (!mapInstanceRef.current) {
@@ -181,6 +199,69 @@ function MapComponent() {
         id="map"
         style={{ height: "500px", width: "100%" }}
       ></div>
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            flexDirection: "column",
+            gap: "10px",
+            marginLeft: "10px",
+          }}
+        >
+          <FormControl>
+            <InputLabel>Tabela</InputLabel>
+            <Select
+              label="Doença"
+              value={mapParams.table}
+              onChange={(e) =>
+                setMapParams({ ...mapParams, table: e.target.value })
+              }
+                renderValue={(selected) => selected}
+            >
+              {tables.map((table) => (
+                <MenuItem key={table} value={table}>
+                  {table}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+          <Select
+            label="Início"
+            value={mapParams.tinit}
+            onChange={(e) =>
+              setMapParams({ ...mapParams, tinit: e.target.value })
+            }
+          >
+            {weeks.map((week) => (
+              <MenuItem key={week} value={week}>
+                {week}
+              </MenuItem>
+            ))}
+          </Select>
+          <Select
+            label="Fim"
+            value={mapParams.tend}
+            onChange={(e) =>
+              setMapParams({ ...mapParams, tend: e.target.value })
+            }
+          >
+            {weeks.map((week) => (
+              <MenuItem key={week} value={week}>
+                {week}
+              </MenuItem>
+            ))}
+          </Select>
+        </div>
+      </div>
     </div>
   );
 }
