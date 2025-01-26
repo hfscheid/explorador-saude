@@ -7,10 +7,11 @@ import pandas as pd
 
 class ReqHandler(BaseHTTPRequestHandler):
     tables = {
-        "dengue": "doencas/dengue-2024-municipios.csv",
-        "chikungunya": "doencas/chikungunya-2024-municipios.csv",
-        "zika": "doencas/zika-2024-municipios.csv",
-        "febre amarela": "doencas/febreamarela-2024-municipios.csv",
+        "dengue": "2024/dengue-2024-municipios.csv",
+        "chikungunya": "2024/chikungunya-2024-municipios.csv",
+        "zika": "2024/zika-2024-municipios.csv",
+        "febre amarela": "2024/febreamarela-2024-municipios.csv",
+        "pluviometria": "2024/pluvio-2024-municipios.csv",
     }
 
     def add_cors_headers(self):
@@ -26,7 +27,9 @@ class ReqHandler(BaseHTTPRequestHandler):
         self.add_cors_headers()
         self.send_header("Content-type", "application/json")
         self.end_headers()
-        tables = json.loads('["dengue", "chikungunya", "zika", "febre amarela"]')
+        tables = json.loads(
+            '["dengue", "chikungunya", "zika", "febre amarela", "pluviometria"]'
+        )
         # print(tables)
         self.wfile.write(json.dumps(tables).encode("latin-1"))
 
