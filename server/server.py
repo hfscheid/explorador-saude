@@ -42,7 +42,7 @@ class ReqHandler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(json.dumps(data).encode("latin-1"))
 
-    def getSeries(self, query_params: dict[str, str]):
+    def get_series(self, query_params: dict[str, str]):
         tables = query_params.get('table', ['dengue'])
         mun = query_params.get('mun', ['Divinópolis'])[0]
         time_init = query_params.get('tinit', ['0'])[0]
@@ -61,7 +61,7 @@ class ReqHandler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(json.dumps(series).encode("latin-1"))
 
-    def getMap(self, query_params: dict[str, str]):
+    def get_map(self, query_params: dict[str, str]):
         table = query_params.get("table", ["dengue"])[0]
         time_init = query_params.get("tinit", ["0"])[0]
         time_end = query_params.get("tend", ["53"])[0]
@@ -75,6 +75,25 @@ class ReqHandler(BaseHTTPRequestHandler):
         self.send_header("Content-type", "application/json")
         self.end_headers()
         self.wfile.write(json.dumps(table).encode("latin-1"))
+
+    def get_ranking(self, query_params: dict[str, str]):
+        table = query_params.get('table', ['dengue'])[0]
+        time_init = query_params.get('tinit', ['0'])[0]
+        time_end = query_params.get('tend', ['53'])[0]
+        municipios, seriesdf = self.filter_table(table, time_init, time_end)
+        seriesdf['cases'] = seriesdf.apply(sum, axis=1)
+        seriesdf['region'] = municipios
+        seriesdf.sort_values('cases', inplace=True, ascending=False)
+        seriesdf.reset_index()
+        seriesdf = seriesdf.loc[:,['cases', 'region']]
+        self.send_response(200)
+        self.add_cors_headers()
+        self.send_header("Content-type", "application/json")
+        self.end_headers()
+        self.wfile.write(
+            json.dumps(seriesdf.to_dict(orient='records'))\
+                .encode("latin-1")
+        )
 
     def filter_table(
         self, tablename: str, time_init: str, time_end: str
@@ -99,9 +118,11 @@ class ReqHandler(BaseHTTPRequestHandler):
         parsed_url = urlparse(self.path)
         query_params = parse_qs(parsed_url.query)
         if parsed_url.path == "/map":
-            self.getMap(query_params)
+            self.get_map(query_params)
         elif parsed_url.path == "/series":
-            self.getSeries(query_params)
+            self.get_series(query_params)
+        elif parsed_url.path == "/ranking":
+            self.get_ranking(query_params)
         elif parsed_url.path == "/tables":
             self.send_tables()
         elif parsed_url.path == "/muns":
