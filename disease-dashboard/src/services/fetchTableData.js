@@ -1,12 +1,9 @@
 import api from "./api";
 
 export const fetchTableData = async ({table, tinit, tend}) => {
-  table = "dengue";
-  tinit = 1;
-  tend = 53;
   try {
     const response = await api.get(
-      `/ranking?${table}&tinit=${tinit}&tend=${tend}`
+      `/ranking?table=${table}&tinit=${tinit}&tend=${tend}`
     );
 
     return response.data;

@@ -84,7 +84,7 @@ function MapComponent() {
 
       mapInstanceRef.current = map;
     }
-  }, []);
+  }, [mapParams]);
 
   // const getRegionColor = (regionName, regionData) => {
   //     const cases = regionData[regionName] || 0;
