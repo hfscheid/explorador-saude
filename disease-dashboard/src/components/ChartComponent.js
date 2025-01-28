@@ -47,15 +47,18 @@ function ChartComponent({ containerStyle }) {
 
   useEffect(() => {
     const fetchMunicipalities = async () => {
-      const muns = await getMun();
+      const muns = await getMun(chartParams.table);
       setMunicipalities(muns);
     };
+    fetchMunicipalities();
+  }, [chartParams]);
+
+  useEffect(() => {
     const fetchTables = async () => {
       const tables = await getTables();
-      setTables(tables)
+      setTables(tables);
     };
 
-    fetchMunicipalities();
     fetchTables();
   }, []);
 
