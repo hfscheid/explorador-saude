@@ -3,12 +3,7 @@ import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import geoJSONData from "../data/geojs.json";
 import { fetchRegionData } from "../services/fetchRegionData";
-import {
-  Select,
-  MenuItem,
-  InputLabel,
-  FormControl,
-} from "@mui/material";
+import { Select, MenuItem } from "@mui/material";
 import DiseaseSelect from "./DiseaseSelectComponent";
 
 function transformData(input) {
@@ -157,9 +152,7 @@ function MapComponent() {
         <Select
           label="Fim"
           value={mapParams.tend}
-          onChange={(e) =>
-            setMapParams({ ...mapParams, tend: e.target.value })
-          }
+          onChange={(e) => setMapParams({ ...mapParams, tend: e.target.value })}
         >
           {weeks.map((week) => (
             <MenuItem key={week} value={week}>

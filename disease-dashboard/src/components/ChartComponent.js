@@ -9,14 +9,7 @@ import {
   Tooltip,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import {
-  Select,
-  MenuItem,
-  InputLabel,
-  FormControl,
-  Checkbox,
-  ListItemText,
-} from "@mui/material";
+import { Select, MenuItem } from "@mui/material";
 import { fetchChartData } from "../services/fetchChartData";
 import { getMun } from "../services/getMun";
 import { getTables } from "../services/getTables";
