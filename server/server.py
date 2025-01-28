@@ -33,14 +33,18 @@ class ReqHandler(BaseHTTPRequestHandler):
         # print(tables)
         self.wfile.write(json.dumps(tables).encode("latin-1"))
 
-    def send_muns(self):
-        with open('../data/municipios.json', 'r') as f:
-            data = json.loads(f.read())
+    def send_muns(self, query_params: dict[str, str]):
+        tables = query_params.get('table', ['dengue'])
+        munSets = []
+        for table in tables:
+            municipios, _ = self.filter_table(table, '1', '53')
+            munSets.append(set(municipios.values))
+        muns = list(set.intersection(*munSets))
         self.send_response(200)
         self.add_cors_headers()
         self.send_header("Content-type", "application/json")
         self.end_headers()
-        self.wfile.write(json.dumps(data).encode("latin-1"))
+        self.wfile.write(json.dumps(muns).encode("latin-1"))
 
     def get_series(self, query_params: dict[str, str]):
         tables = query_params.get('table', ['dengue'])
@@ -126,7 +130,7 @@ class ReqHandler(BaseHTTPRequestHandler):
         elif parsed_url.path == "/tables":
             self.send_tables()
         elif parsed_url.path == "/muns":
-            self.send_muns()
+            self.send_muns(query_params)
 
     def do_PUT(self):
         content_len = int(self.headers.get("Content-Length"))
