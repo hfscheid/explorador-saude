@@ -5,6 +5,7 @@ import geoJSONData from "../data/geojs.json";
 import { fetchRegionData } from "../services/fetchRegionData";
 import { Select, MenuItem } from "@mui/material";
 import DiseaseSelect from "./DiseaseSelectComponent";
+import { getTables } from "../services/getTables";
 
 function transformData(input) {
   return input.reduce((result, { municipio, total }) => {
@@ -20,6 +21,7 @@ function MapComponent() {
   const mapRef = useRef(null);
   const mapInstanceRef = useRef(null);
   const geoJsonLayerRef = useRef(null); // Ref for the GeoJSON layer
+  const [tables, setTables] = useState([]);
 
   const [mapParams, setMapParams] = useState({
     table: ["dengue"],
@@ -28,6 +30,14 @@ function MapComponent() {
   });
 
   const weeks = Array.from({ length: 53 }, (_, i) => i + 1);
+
+  useEffect(() => {
+    const fetchTables = async () => {
+      const tables = await getTables();
+      setTables(tables);
+    };
+    fetchTables();
+  }, []);
 
   useEffect(() => {
     // Initialize the map only once
@@ -135,6 +145,7 @@ function MapComponent() {
           params={mapParams}
           setParams={setMapParams}
           multiSelect={false}
+          menuItems={tables}
         />
         <Select
           label="Início"
