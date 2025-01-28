@@ -20,7 +20,8 @@ import {
 import { fetchChartData } from "../services/fetchChartData";
 import { getMun } from "../services/getMun";
 import { getTables } from "../services/getTables";
-import rgbHex from 'rgb-hex';
+import rgbHex from "rgb-hex";
+import DiseaseSelect from "./DiseaseSelectComponent";
 
 ChartJS.register(
   LineElement,
@@ -68,11 +69,13 @@ function ChartComponent({ containerStyle }) {
         const datasets = data.datasets.map((dataset) => ({
           label: dataset.label,
           data: dataset.values,
-          borderColor: "#"+rgbHex(
-            Math.floor(Math.random() * 256),
-            Math.floor(Math.random() * 256),
-            Math.floor(Math.random() * 256)
-          ),
+          borderColor:
+            "#" +
+            rgbHex(
+              Math.floor(Math.random() * 256),
+              Math.floor(Math.random() * 256),
+              Math.floor(Math.random() * 256)
+            ),
           fill: false,
         }));
 
@@ -128,24 +131,11 @@ function ChartComponent({ containerStyle }) {
             marginLeft: "10px",
           }}
         >
-          <FormControl>
-            <InputLabel>Tabela</InputLabel>
-            <Select
-              multiple
-              value={chartParams.table}
-              onChange={(e) =>
-                setChartParams({ ...chartParams, table: e.target.value })
-              }
-              renderValue={(selected) => selected.join(", ")}
-            >
-            {tables.map((table) => (
-              <MenuItem key={table} value={table}>
-                <Checkbox checked={chartParams.table.indexOf(table) > -1} />
-                <ListItemText primary={table} />
-              </MenuItem>
-            ))}
-            </Select>
-          </FormControl>
+          <DiseaseSelect
+            params={chartParams}
+            setParams={setChartParams}
+            menuItems={tables}
+          />
           <Select
             label="Início"
             value={chartParams.tinit}
