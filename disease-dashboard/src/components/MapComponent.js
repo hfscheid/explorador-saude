@@ -139,6 +139,7 @@ function MapComponent() {
           display: "flex",
           flexDirection: "row",
           alignItems: "center",
+          marginBottom: "20px",
         }}
       >
         <DiseaseSelect
