@@ -38,6 +38,34 @@ function ChartComponent({ containerStyle }) {
   });
   const [municipalities, setMunicipalities] = useState([]);
   const [tables, setTables] = useState([]);
+  const [chartOptions, setChartOptions] = useState({
+    responsive: true,
+    interaction: {
+      mode: "index",
+      intersect: false,
+    },
+    plugins: {
+      legend: { position: "top" },
+      tooltip: {
+        callbacks: {
+          label: function (context) {
+            return `${context.dataset.label}: ${context.raw}`;
+          },
+        },
+      },
+    },
+    scales: {
+      x: { title: { display: true, text: "Semana epidemiológica" } },
+      y: { title: { display: true, text: "Número de casos" } },
+      y1: {
+        type: "linear",
+        display: false,
+        position: "right",
+        grid: { drawOnChartArea: false },
+        title: { display: true, text: "Precipitação" },
+      },
+    },
+  });
 
   useEffect(() => {
     const fetchMunicipalities = async () => {
@@ -59,6 +87,10 @@ function ChartComponent({ containerStyle }) {
   useEffect(() => {
     fetchChartData(chartParams).then((data) => {
       if (data) {
+        const hasPluviometria = data.datasets.some(
+          (dataset) => dataset.label === "pluviometria"
+        );
+
         const datasets = data.datasets.map((dataset) => ({
           label: dataset.label,
           data: dataset.values,
@@ -70,33 +102,28 @@ function ChartComponent({ containerStyle }) {
               Math.floor(Math.random() * 256)
             ),
           fill: false,
+          yAxisID: dataset.label === "pluviometria" ? "y1" : "y",
         }));
 
         setChartData({
           labels: data.labels,
           datasets: datasets,
         });
+
+        // Dynamically update the chart options based on whether "pluviometria" exists
+        setChartOptions((prevOptions) => ({
+          ...prevOptions,
+          scales: {
+            ...prevOptions.scales,
+            y1: {
+              ...prevOptions.scales.y1,
+              display: hasPluviometria, // Show y1 only if there is "pluviometria" data
+            },
+          },
+        }));
       }
     });
   }, [chartParams]);
-
-  const chartOptions = {
-    responsive: true,
-    plugins: {
-      legend: { position: "top" },
-      tooltip: {
-        callbacks: {
-          label: function (context) {
-            return `${context.dataset.label}: ${context.raw}`;
-          },
-        },
-      },
-    },
-    scales: {
-      x: { title: { display: true, text: "Semana epidemiológica" } },
-      y: { title: { display: true, text: "Número de casos" } },
-    },
-  };
 
   const weeks = Array.from({ length: 53 }, (_, i) => i + 1);
 

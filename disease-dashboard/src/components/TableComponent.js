@@ -3,12 +3,7 @@ import { Table } from "antd";
 import "antd/dist/reset.css"; // Correct path for Ant Design styles
 import { fetchTableData } from "../services/fetchTableData";
 import { getTables } from "../services/getTables";
-import {
-  Select,
-  MenuItem,
-  InputLabel,
-  FormControl,
-} from "@mui/material";
+import { Select, MenuItem, InputLabel, FormControl } from "@mui/material";
 
 function TableComponent() {
   const [tableData, setTableData] = useState([]);
@@ -52,11 +47,6 @@ function TableComponent() {
   return (
     <div>
       <h2>Data Table</h2>
-      <Table
-        dataSource={tableData}
-        columns={columns}
-        pagination={{ pageSize: 5 }}
-      />
       <div
         style={{
           width: "100%",
@@ -64,62 +54,58 @@ function TableComponent() {
           display: "flex",
           flexDirection: "row",
           alignItems: "center",
+          marginBottom: "20px",
         }}
       >
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            flexDirection: "column",
-            gap: "10px",
-            marginLeft: "10px",
-          }}
+        <FormControl>
+          <InputLabel>Tabela</InputLabel>
+          <Select
+            label="Doença"
+            value={tableParams.table}
+            onChange={(e) =>
+              setTableParams({ ...tableParams, table: e.target.value })
+            }
+            renderValue={(selected) => selected}
+          >
+            {tables.map((table) => (
+              <MenuItem key={table} value={table}>
+                {table}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+        <Select
+          label="Início"
+          value={tableParams.tinit}
+          onChange={(e) =>
+            setTableParams({ ...tableParams, tinit: e.target.value })
+          }
         >
-          <FormControl>
-            <InputLabel>Tabela</InputLabel>
-            <Select
-              label="Doença"
-              value={tableParams.table}
-              onChange={(e) =>
-                setTableParams({ ...tableParams, table: e.target.value })
-              }
-                renderValue={(selected) => selected}
-            >
-              {tables.map((table) => (
-                <MenuItem key={table} value={table}>
-                  {table}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-          <Select
-            label="Início"
-            value={tableParams.tinit}
-            onChange={(e) =>
-              setTableParams({ ...tableParams, tinit: e.target.value })
-            }
-          >
-            {weeks.map((week) => (
-              <MenuItem key={week} value={week}>
-                {week}
-              </MenuItem>
-            ))}
-          </Select>
-          <Select
-            label="Fim"
-            value={tableParams.tend}
-            onChange={(e) =>
-              setTableParams({ ...tableParams, tend: e.target.value })
-            }
-          >
-            {weeks.map((week) => (
-              <MenuItem key={week} value={week}>
-                {week}
-              </MenuItem>
-            ))}
-          </Select>
-        </div>
+          {weeks.map((week) => (
+            <MenuItem key={week} value={week}>
+              {week}
+            </MenuItem>
+          ))}
+        </Select>
+        <Select
+          label="Fim"
+          value={tableParams.tend}
+          onChange={(e) =>
+            setTableParams({ ...tableParams, tend: e.target.value })
+          }
+        >
+          {weeks.map((week) => (
+            <MenuItem key={week} value={week}>
+              {week}
+            </MenuItem>
+          ))}
+        </Select>
       </div>
+      <Table
+        dataSource={tableData}
+        columns={columns}
+        pagination={{ pageSize: 8 }}
+      />
     </div>
   );
 }

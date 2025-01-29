@@ -12,7 +12,7 @@ const DiseaseSelect = ({
   params,
   setParams,
   multiSelect = true,
-  menuItems = null,
+  menuItems = false,
 }) => {
   return (
     <FormControl>
@@ -39,19 +39,19 @@ const DiseaseSelect = ({
           ))
         ) : (
           <>
-            <MenuItem value="dengue">
+            <MenuItem key={"dengue"} value="dengue">
               {multiSelect && (
                 <Checkbox checked={params.table.indexOf("dengue") > -1} />
               )}
               <ListItemText primary="Dengue" />
             </MenuItem>
-            <MenuItem value="chikungunya">
+            <MenuItem key={"chikungunya"} value="chikungunya">
               {multiSelect && (
                 <Checkbox checked={params.table.indexOf("chikungunya") > -1} />
               )}
               <ListItemText primary="Chikungunya" />
             </MenuItem>
-            <MenuItem value="zika">
+            <MenuItem key={"zika"} value="zika">
               {multiSelect && (
                 <Checkbox checked={params.table.indexOf("zika") > -1} />
               )}
