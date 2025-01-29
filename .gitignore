@@ -1,3 +1,7 @@
 *.ipynb
 shell.nix
 node_modules
+scripts/pluvi
+scripts/pluvi_unziped
+scripts/unziped_pluvi
+dshEnv

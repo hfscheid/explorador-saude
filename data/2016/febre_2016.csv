@@ -1,0 +1,35 @@
+Casos notificados (suspeitos/confirmados) de Febre Amarela por local de residência - Minas Gerais
+Notificações por Região de Saúde (CIR)/Mun Res e Semana epidemiológica notific.
+Período:2016
+"Região de Saúde (CIR)/Mun Res";"Semana 02";"Semana 07";"Semana 13";"Semana 16";"Semana 17";"Semana 24";"Semana 33";"Semana 36";"Semana 41";"Semana 52";"Total"
+"31007 Pouso Alegre";-;1;-;1;-;-;-;-;-;-;2
+".....  SANTA RITA DO SAPUCAI";-;1;-;-;-;-;-;-;-;-;1
+".....  POUSO ALEGRE";-;-;-;1;-;-;-;-;-;-;1
+"31016 Belo Horizonte/Nova Lima/Santa Luzia";-;-;-;-;1;1;-;-;-;-;2
+".....  BELO HORIZONTE";-;-;-;-;1;1;-;-;-;-;2
+"31024 Sete Lagoas";-;-;-;-;-;-;-;1;-;-;1
+".....  CACHOEIRA DA PRATA";-;-;-;-;-;-;-;1;-;-;1
+"31034 Caratinga";1;-;-;-;-;-;-;-;-;-;1
+".....  ENTRE FOLHAS";1;-;-;-;-;-;-;-;-;-;1
+"31037 Ipatinga";-;-;1;-;-;-;-;-;-;-;1
+".....  IPATINGA";-;-;1;-;-;-;-;-;-;-;1
+"31075 Uberlândia/Araguari";1;-;-;-;-;-;-;-;1;-;2
+".....  UBERLANDIA";1;-;-;-;-;-;-;-;1;-;2
+"31084 Montes Claros";-;-;-;-;-;-;1;-;1;-;2
+".....  MONTES CLAROS";-;-;-;-;-;-;1;-;1;-;2
+"31096 Itambacuri";-;-;-;-;-;-;-;-;-;3;3
+".....  ITAMBACURI";-;-;-;-;-;-;-;-;-;2;2
+".....  FREI GASPAR";-;-;-;-;-;-;-;-;-;1;1
+"Total";2;1;1;1;1;1;1;1;2;3;14
+ 
+ Fonte: SINAN/CPDE/SVE/SUBVS/SESMG 
+ Notas:
+
+  Períodos Disponíveis ou período - Correspondem aos anos de notificação dos casos.
+  Para tabular dados epidemiológicos de um determinado ano selecione na linha a variável de interesse, na Coluna Ano dos 1ºs sintomas; em Períodos Disponíveis assinale o ano inicial da série e todos os posteriores até o ano
+atual (p/ incluir casos notificados com atraso) e em Seleções Disponíveis assinale os anos dos 1ºs sintomas (ex: nº de casos com início de sintomas 2007: selecione na linha Município de residência, na Coluna Ano de 1ºs sintomas,
+em Períodos disponíveis 2007 até o ano atual e em Seleções assinale Ano de 1ºs sintomas 2007).
+  Dados considerados em 21 de outubro de 2024, portanto sujeitos a alterações/revisões.
+ 
+ Elaboração: CPDE/SVE/SESMG
+ 

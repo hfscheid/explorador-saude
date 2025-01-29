@@ -1,0 +1,34 @@
+Casos notificados (suspeitos/confirmados) de Febre Amarela por local de residência - Minas Gerais
+Notificações por Região de Saúde (CIR)/Mun Res e Semana epidemiológica notific.
+Período:2010
+"Região de Saúde (CIR)/Mun Res";"Semana 02";"Semana 04";"Semana 09";"Semana 10";"Semana 12";"Semana 15";"Semana 18";"Semana 22";"Semana 27";"Semana 37";"Semana 38";"Semana 44";"Semana 45";"Semana 52";"Total"
+"31003 Itajubá";1;-;-;-;-;-;-;-;-;-;-;-;-;-;1
+".....  ITAJUBA";1;-;-;-;-;-;-;-;-;-;-;-;-;-;1
+"31007 Pouso Alegre";-;-;-;-;-;-;-;-;-;-;1;-;-;-;1
+".....  POUSO ALEGRE";-;-;-;-;-;-;-;-;-;-;1;-;-;-;1
+"31016 Belo Horizonte/Nova Lima/Santa Luzia";1;1;-;-;-;-;-;1;1;1;-;1;-;1;7
+".....  RIBEIRAO DAS NEVES";-;-;-;-;-;-;-;-;-;-;-;1;-;-;1
+".....  BELO HORIZONTE";-;1;-;-;-;-;-;1;1;1;-;-;-;1;5
+".....  SANTA LUZIA";1;-;-;-;-;-;-;-;-;-;-;-;-;-;1
+"31021 Itabira";-;-;-;1;1;-;-;-;-;-;-;-;-;-;2
+".....  ITABIRA";-;-;-;1;1;-;-;-;-;-;-;-;-;-;2
+"31026 Diamantina/Itamarandiba";-;-;-;-;-;1;1;-;-;-;-;-;-;-;2
+".....  COLUNA";-;-;-;-;-;-;1;-;-;-;-;-;-;-;1
+".....  DIAMANTINA";-;-;-;-;-;1;-;-;-;-;-;-;-;-;1
+"31031 Itaúna";-;-;1;1;-;-;-;-;-;-;-;-;-;-;2
+".....  ITAUNA";-;-;1;1;-;-;-;-;-;-;-;-;-;-;2
+"31071 Frutal/Iturama";-;-;-;-;-;-;-;-;-;-;-;-;1;-;1
+".....  UNIAO DE MINAS";-;-;-;-;-;-;-;-;-;-;-;-;1;-;1
+"Total";2;1;1;2;1;1;1;1;1;1;1;1;1;1;16
+ 
+ Fonte: SINAN/CPDE/SVE/SUBVS/SESMG 
+ Notas:
+
+  Períodos Disponíveis ou período - Correspondem aos anos de notificação dos casos.
+  Para tabular dados epidemiológicos de um determinado ano selecione na linha a variável de interesse, na Coluna Ano dos 1ºs sintomas; em Períodos Disponíveis assinale o ano inicial da série e todos os posteriores até o ano
+atual (p/ incluir casos notificados com atraso) e em Seleções Disponíveis assinale os anos dos 1ºs sintomas (ex: nº de casos com início de sintomas 2007: selecione na linha Município de residência, na Coluna Ano de 1ºs sintomas,
+em Períodos disponíveis 2007 até o ano atual e em Seleções assinale Ano de 1ºs sintomas 2007).
+  Dados considerados em 21 de outubro de 2024, portanto sujeitos a alterações/revisões.
+ 
+ Elaboração: CPDE/SVE/SESMG
+ 

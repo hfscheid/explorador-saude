@@ -1,0 +1,41 @@
+Casos notificados (suspeitos/confirmados) de Febre Amarela por local de residência - Minas Gerais
+Notificações por Região de Saúde (CIR)/Mun Res e Semana epidemiológica notific.
+Período:2015
+"Região de Saúde (CIR)/Mun Res";"Semana 03";"Semana 06";"Semana 11";"Semana 13";"Semana 17";"Semana 18";"Semana 21";"Semana 30";"Semana 36";"Semana 38";"Semana 47";"Semana 50";"Total"
+"31007 Pouso Alegre";-;-;-;-;-;1;-;-;-;-;-;-;1
+".....  POUSO ALEGRE";-;-;-;-;-;1;-;-;-;-;-;-;1
+"31016 Belo Horizonte/Nova Lima/Santa Luzia";-;-;-;-;-;-;-;-;1;-;-;-;1
+".....  BELO HORIZONTE";-;-;-;-;-;-;-;-;1;-;-;-;1
+"31018 Contagem";-;1;-;-;-;-;-;-;-;-;-;-;1
+".....  IBIRITE";-;1;-;-;-;-;-;-;-;-;-;-;1
+"31026 Diamantina/Itamarandiba";-;-;-;1;-;-;-;-;-;-;-;-;1
+".....  DIAMANTINA";-;-;-;1;-;-;-;-;-;-;-;-;1
+"31028 Bom Despacho";-;-;-;-;-;-;1;-;-;-;-;-;1
+".....  BOM DESPACHO";-;-;-;-;-;-;1;-;-;-;-;-;1
+"31035 Coronel Fabriciano/Timóteo";1;-;-;-;-;-;-;-;-;-;-;-;1
+".....  CORONEL FABRICIANO";1;-;-;-;-;-;-;-;-;-;-;-;1
+"31059 Manhuaçu";-;-;1;-;-;-;-;-;-;-;-;-;1
+".....  MUTUM";-;-;1;-;-;-;-;-;-;-;-;-;1
+"31065 Itaobim";1;-;-;-;-;-;-;-;-;-;-;-;1
+".....  PONTO DOS VOLANTES";1;-;-;-;-;-;-;-;-;-;-;-;1
+"31071 Frutal/Iturama";-;-;-;-;-;-;-;-;-;-;-;1;1
+".....  UNIAO DE MINAS";-;-;-;-;-;-;-;-;-;-;-;1;1
+"31075 Uberlândia/Araguari";-;-;-;-;-;-;-;1;-;-;1;-;2
+".....  UBERLANDIA";-;-;-;-;-;-;-;1;-;-;1;-;2
+"31087 Lagoa da Prata/Santo Antônio do Monte";-;-;-;-;1;-;-;-;-;-;-;-;1
+".....  SANTO ANTONIO DO MONTE";-;-;-;-;1;-;-;-;-;-;-;-;1
+"31099 Teófilo Otoni/Malacacheta";-;-;-;-;-;-;-;-;-;1;-;-;1
+".....  NOVO CRUZEIRO";-;-;-;-;-;-;-;-;-;1;-;-;1
+"Total";2;1;1;1;1;1;1;1;1;1;1;1;13
+ 
+ Fonte: SINAN/CPDE/SVE/SUBVS/SESMG 
+ Notas:
+
+  Períodos Disponíveis ou período - Correspondem aos anos de notificação dos casos.
+  Para tabular dados epidemiológicos de um determinado ano selecione na linha a variável de interesse, na Coluna Ano dos 1ºs sintomas; em Períodos Disponíveis assinale o ano inicial da série e todos os posteriores até o ano
+atual (p/ incluir casos notificados com atraso) e em Seleções Disponíveis assinale os anos dos 1ºs sintomas (ex: nº de casos com início de sintomas 2007: selecione na linha Município de residência, na Coluna Ano de 1ºs sintomas,
+em Períodos disponíveis 2007 até o ano atual e em Seleções assinale Ano de 1ºs sintomas 2007).
+  Dados considerados em 21 de outubro de 2024, portanto sujeitos a alterações/revisões.
+ 
+ Elaboração: CPDE/SVE/SESMG
+ 

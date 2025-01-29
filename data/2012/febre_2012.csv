@@ -1,0 +1,48 @@
+Casos notificados (suspeitos/confirmados) de Febre Amarela por local de residência - Minas Gerais
+Notificações por Região de Saúde (CIR)/Mun Res e Semana epidemiológica notific.
+Período:2012
+"Região de Saúde (CIR)/Mun Res";"Semana 01";"Semana 16";"Semana 17";"Semana 18";"Semana 20";"Semana 26";"Semana 30";"Semana 33";"Semana 34";"Semana 35";"Semana 36";"Semana 38";"Semana 45";"Semana 46";"Semana 49";"Total"
+"31003 Itajubá";1;-;-;-;-;-;-;-;-;-;-;-;-;-;-;1
+".....  ITAJUBA";1;-;-;-;-;-;-;-;-;-;-;-;-;-;-;1
+"31004 Lavras";-;-;-;1;-;-;-;-;-;-;-;-;-;-;-;1
+".....  PERDOES";-;-;-;1;-;-;-;-;-;-;-;-;-;-;-;1
+"31016 Belo Horizonte/Nova Lima/Santa Luzia";-;-;1;-;1;-;-;-;-;-;-;-;-;1;-;3
+".....  BELO HORIZONTE";-;-;-;-;1;-;-;-;-;-;-;-;-;-;-;1
+".....  NOVA LIMA";-;-;-;-;-;-;-;-;-;-;-;-;-;1;-;1
+".....  CAETE";-;-;1;-;-;-;-;-;-;-;-;-;-;-;-;1
+"31018 Contagem";1;-;-;-;-;-;-;-;-;-;-;1;-;-;-;2
+".....  CONTAGEM";1;-;-;-;-;-;-;-;-;-;-;1;-;-;-;2
+"31022 Ouro Preto";-;-;-;-;-;-;-;-;-;-;1;-;-;-;-;1
+".....  ITABIRITO";-;-;-;-;-;-;-;-;-;-;1;-;-;-;-;1
+"31024 Sete Lagoas";-;-;-;-;-;-;-;-;-;-;-;-;-;-;1;1
+".....  SETE LAGOAS";-;-;-;-;-;-;-;-;-;-;-;-;-;-;1;1
+"31025 Vespasiano/Lagoa Santa";-;-;-;-;-;1;1;-;-;-;-;-;-;-;-;2
+".....  VESPASIANO";-;-;-;-;-;-;1;-;-;-;-;-;-;-;-;1
+".....  MATOZINHOS";-;-;-;-;-;1;-;-;-;-;-;-;-;-;-;1
+"31027 Turmalina/Minas Novas/Capelinha";-;-;-;-;-;-;-;-;-;-;-;-;1;-;-;1
+".....  CAPELINHA";-;-;-;-;-;-;-;-;-;-;-;-;1;-;-;1
+"31028 Bom Despacho";-;-;-;-;-;-;-;1;-;-;-;-;-;-;-;1
+".....  BOM DESPACHO";-;-;-;-;-;-;-;1;-;-;-;-;-;-;-;1
+"31037 Ipatinga";-;-;-;-;-;-;-;-;1;-;-;-;-;-;-;1
+".....  IPATINGA";-;-;-;-;-;-;-;-;1;-;-;-;-;-;-;1
+"31059 Manhuaçu";-;-;-;-;-;-;-;1;-;-;-;-;-;-;-;1
+".....  MANHUACU";-;-;-;-;-;-;-;1;-;-;-;-;-;-;-;1
+"31071 Frutal/Iturama";-;-;-;-;-;-;-;-;-;1;-;-;-;-;-;1
+".....  FRUTAL";-;-;-;-;-;-;-;-;-;1;-;-;-;-;-;1
+"31087 Lagoa da Prata/Santo Antônio do Monte";-;-;-;-;-;-;-;-;-;-;-;-;-;-;1;1
+".....  ARCOS";-;-;-;-;-;-;-;-;-;-;-;-;-;-;1;1
+"31097 Juiz de Fora";-;1;-;-;-;-;-;-;-;-;-;-;-;-;-;1
+".....  JUIZ DE FORA";-;1;-;-;-;-;-;-;-;-;-;-;-;-;-;1
+"Total";2;1;1;1;1;1;1;2;1;1;1;1;1;1;2;18
+ 
+ Fonte: SINAN/CPDE/SVE/SUBVS/SESMG 
+ Notas:
+
+  Períodos Disponíveis ou período - Correspondem aos anos de notificação dos casos.
+  Para tabular dados epidemiológicos de um determinado ano selecione na linha a variável de interesse, na Coluna Ano dos 1ºs sintomas; em Períodos Disponíveis assinale o ano inicial da série e todos os posteriores até o ano
+atual (p/ incluir casos notificados com atraso) e em Seleções Disponíveis assinale os anos dos 1ºs sintomas (ex: nº de casos com início de sintomas 2007: selecione na linha Município de residência, na Coluna Ano de 1ºs sintomas,
+em Períodos disponíveis 2007 até o ano atual e em Seleções assinale Ano de 1ºs sintomas 2007).
+  Dados considerados em 21 de outubro de 2024, portanto sujeitos a alterações/revisões.
+ 
+ Elaboração: CPDE/SVE/SESMG
+ 

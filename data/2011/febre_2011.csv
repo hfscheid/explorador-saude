@@ -1,0 +1,39 @@
+Casos notificados (suspeitos/confirmados) de Febre Amarela por local de residência - Minas Gerais
+Notificações por Região de Saúde (CIR)/Mun Res e Semana epidemiológica notific.
+Período:2011
+"Região de Saúde (CIR)/Mun Res";"Semana 03";"Semana 04";"Semana 06";"Semana 13";"Semana 17";"Semana 21";"Semana 25";"Semana 27";"Semana 34";"Semana 36";"Semana 37";"Semana 52";"Total"
+"31001 Alfenas/Machado";-;-;-;-;-;-;1;-;-;-;-;-;1
+".....  ALFENAS";-;-;-;-;-;-;1;-;-;-;-;-;1
+"31006 Poços de Caldas";-;-;-;-;-;-;-;-;-;-;-;1;1
+".....  ANDRADAS";-;-;-;-;-;-;-;-;-;-;-;1;1
+"31016 Belo Horizonte/Nova Lima/Santa Luzia";1;-;1;1;2;-;-;1;-;1;-;-;7
+".....  BELO HORIZONTE";-;-;1;1;2;-;-;1;-;-;-;-;5
+".....  NOVA LIMA";-;-;-;-;-;-;-;-;-;1;-;-;1
+".....  RIO ACIMA";1;-;-;-;-;-;-;-;-;-;-;-;1
+"31017 Betim";-;-;-;-;-;1;-;-;-;-;-;-;1
+".....  BETIM";-;-;-;-;-;1;-;-;-;-;-;-;1
+"31022 Ouro Preto";1;-;-;-;-;-;-;-;-;-;-;-;1
+".....  OURO PRETO";1;-;-;-;-;-;-;-;-;-;-;-;1
+"31031 Itaúna";-;-;-;-;-;-;-;-;1;-;-;-;1
+".....  ITAUNA";-;-;-;-;-;-;-;-;1;-;-;-;1
+"31048 Ubá";-;-;-;-;-;-;-;-;-;-;1;-;1
+".....  UBA";-;-;-;-;-;-;-;-;-;-;1;-;1
+"31071 Frutal/Iturama";-;-;-;-;-;-;-;-;-;1;-;-;1
+".....  FRUTAL";-;-;-;-;-;-;-;-;-;1;-;-;1
+"31078 Congonhas";-;1;-;-;-;-;-;-;-;-;-;-;1
+".....  CONGONHAS";-;1;-;-;-;-;-;-;-;-;-;-;1
+"31094 Almenara/Jacinto";-;-;-;-;-;-;-;-;-;-;1;-;1
+".....  ALMENARA";-;-;-;-;-;-;-;-;-;-;1;-;1
+"Total";2;1;1;1;2;1;1;1;1;2;2;1;16
+ 
+ Fonte: SINAN/CPDE/SVE/SUBVS/SESMG 
+ Notas:
+
+  Períodos Disponíveis ou período - Correspondem aos anos de notificação dos casos.
+  Para tabular dados epidemiológicos de um determinado ano selecione na linha a variável de interesse, na Coluna Ano dos 1ºs sintomas; em Períodos Disponíveis assinale o ano inicial da série e todos os posteriores até o ano
+atual (p/ incluir casos notificados com atraso) e em Seleções Disponíveis assinale os anos dos 1ºs sintomas (ex: nº de casos com início de sintomas 2007: selecione na linha Município de residência, na Coluna Ano de 1ºs sintomas,
+em Períodos disponíveis 2007 até o ano atual e em Seleções assinale Ano de 1ºs sintomas 2007).
+  Dados considerados em 21 de outubro de 2024, portanto sujeitos a alterações/revisões.
+ 
+ Elaboração: CPDE/SVE/SESMG
+ 

@@ -6,12 +6,13 @@ import pandas as pd
 
 
 class ReqHandler(BaseHTTPRequestHandler):
+    
     tables = {
-        "dengue": "2024/dengue-2024-municipios.csv",
-        "chikungunya": "2024/chikungunya-2024-municipios.csv",
-        "zika": "2024/zika-2024-municipios.csv",
-        "febre amarela": "2024/febreamarela-2024-municipios.csv",
-        "pluviometria": "2024/pluvio-2024-municipios.csv",
+        "dengue": "dengue-municipios.csv",
+        "chikungunya": "/hikungunya-municipios.csv",
+        "zika": "zika-municipios.csv",
+        "febre amarela": "febreamarela--municipios.csv",
+        "pluviometria": "pluvio-municipios.csv",
     }
 
     def add_cors_headers(self):
@@ -51,9 +52,10 @@ class ReqHandler(BaseHTTPRequestHandler):
         mun = query_params.get('mun', ['Divinópolis'])[0]
         time_init = query_params.get('tinit', ['0'])[0]
         time_end = query_params.get('tend', ['53'])[0]
+        year = query_params.get('year', ['2024'])[0]
         series = {'labels': [], 'datasets': []}
         for table in tables:
-            municipios, seriesdf = self.filter_table(table, time_init, time_end)
+            municipios, seriesdf = self.filter_table(table, time_init, time_end, year)
             series['labels'] = list(seriesdf.columns)
             index = municipios[municipios == mun].index[0]
             weeks = [int(x) for x in seriesdf.loc[index, :].values]
@@ -69,7 +71,8 @@ class ReqHandler(BaseHTTPRequestHandler):
         table = query_params.get("table", ["dengue"])[0]
         time_init = query_params.get("tinit", ["0"])[0]
         time_end = query_params.get("tend", ["53"])[0]
-        municipios, table = self.filter_table(table, time_init, time_end)
+        year = query_params.get("year", ["2024"])[0]
+        municipios, table = self.filter_table(table, time_init, time_end, year)
         table["total"] = table.apply(sum, axis=1)
         table["municipio"] = municipios
         table = table.loc[:, ["municipio", "total"]].to_dict(orient="records")
@@ -84,7 +87,8 @@ class ReqHandler(BaseHTTPRequestHandler):
         table = query_params.get('table', ['dengue'])[0]
         time_init = query_params.get('tinit', ['0'])[0]
         time_end = query_params.get('tend', ['53'])[0]
-        municipios, seriesdf = self.filter_table(table, time_init, time_end)
+        year = query_params.get('year', ['2024'])[0]
+        municipios, seriesdf = self.filter_table(table, time_init, time_end, year)
         seriesdf['cases'] = seriesdf.apply(sum, axis=1)
         seriesdf['region'] = municipios
         seriesdf.sort_values('cases', inplace=True, ascending=False)
@@ -100,7 +104,7 @@ class ReqHandler(BaseHTTPRequestHandler):
         )
 
     def filter_table(
-        self, tablename: str, time_init: str, time_end: str
+        self, tablename: str, time_init: str, time_end: str, year: str
     ) -> dict[str, str]:
         init_column = "Semana " + (
             f"0{time_init}" if int(time_init) < 10 else f"{time_init}"
@@ -108,7 +112,7 @@ class ReqHandler(BaseHTTPRequestHandler):
         end_column = "Semana " + (
             f"0{time_end}" if int(time_end) < 10 else f"{time_end}"
         )
-        df = pd.read_csv(f"../data/{self.tables[tablename]}", encoding="latin-1")
+        df = pd.read_csv(f"../data/{year}/{self.tables[tablename]}", encoding="latin-1")
         municipios = df["Município"].copy()
         for column in df.columns:
             if "Semana" in column:
