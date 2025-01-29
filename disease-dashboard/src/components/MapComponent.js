@@ -27,9 +27,11 @@ function MapComponent() {
     table: ["dengue"],
     tinit: "1",
     tend: "53",
+    year: 2024
   });
 
   const weeks = Array.from({ length: 53 }, (_, i) => i + 1);
+  const years = Array.from({ length: 7 }, (_, i) => i + 2017);
 
   useEffect(() => {
     const fetchTables = async () => {
@@ -169,6 +171,17 @@ function MapComponent() {
           {weeks.map((week) => (
             <MenuItem key={week} value={week}>
               {week}
+            </MenuItem>
+          ))}
+        </Select>
+        <Select
+          label="Year"
+          value={mapParams.year}
+          onChange={(e) => setMapParams({ ...mapParams, year: e.target.value })}
+        >
+          {years.map((year) => (
+            <MenuItem key={year} value={year}>
+              {year}
             </MenuItem>
           ))}
         </Select>

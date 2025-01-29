@@ -9,9 +9,9 @@ class ReqHandler(BaseHTTPRequestHandler):
     
     tables = {
         "dengue": "dengue-municipios.csv",
-        "chikungunya": "/hikungunya-municipios.csv",
+        "chikungunya": "chikungunya-municipios.csv",
         "zika": "zika-municipios.csv",
-        "febre amarela": "febreamarela--municipios.csv",
+        "febre amarela": "febreamarela-municipios.csv",
         "pluviometria": "pluvio-municipios.csv",
     }
 
@@ -38,7 +38,7 @@ class ReqHandler(BaseHTTPRequestHandler):
         tables = query_params.get('table', ['dengue'])
         munSets = []
         for table in tables:
-            municipios, _ = self.filter_table(table, '1', '53')
+            municipios, _ = self.filter_table(table, '1', '53', '2024')
             munSets.append(set(municipios.values))
         muns = list(set.intersection(*munSets))
         self.send_response(200)
@@ -104,7 +104,7 @@ class ReqHandler(BaseHTTPRequestHandler):
         )
 
     def filter_table(
-        self, tablename: str, time_init: str, time_end: str, year: str
+        self, tablename: str, time_init: str, time_end: str, year='2024'
     ) -> dict[str, str]:
         init_column = "Semana " + (
             f"0{time_init}" if int(time_init) < 10 else f"{time_init}"

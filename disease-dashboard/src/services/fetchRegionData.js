@@ -1,9 +1,9 @@
 import api from "./api";
 
-export const fetchRegionData = async ({table, tinit, tend}) => {
+export const fetchRegionData = async ({table, tinit, tend, year}) => {
   try {
     const response = await api.get(
-      `/map?table=${table}&tinit=${tinit}&tend=${tend}`
+      `/map?table=${table}&tinit=${tinit}&tend=${tend}&year=${year}`
     );
 
     return response.data;

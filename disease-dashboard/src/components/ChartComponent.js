@@ -34,6 +34,7 @@ function ChartComponent({ containerStyle }) {
     table: ["dengue"],
     tinit: "1",
     tend: "53",
+    year: 2024,
     mun: "Divinópolis",
   });
   const [municipalities, setMunicipalities] = useState([]);
@@ -126,6 +127,7 @@ function ChartComponent({ containerStyle }) {
   }, [chartParams]);
 
   const weeks = Array.from({ length: 53 }, (_, i) => i + 1);
+  const years = Array.from({ length: 7 }, (_, i) => i + 2017);
 
   return (
     <div style={{ ...containerStyle }}>
@@ -179,6 +181,19 @@ function ChartComponent({ containerStyle }) {
             {weeks.map((week) => (
               <MenuItem key={week} value={week}>
                 {week}
+              </MenuItem>
+            ))}
+          </Select>
+          <Select
+            label="Ano"
+            value={chartParams.year}
+            onChange={(e) =>
+              setChartParams({ ...chartParams, year: e.target.value })
+            }
+          >
+            {years.map((year) => (
+              <MenuItem key={year} value={year}>
+                {year}
               </MenuItem>
             ))}
           </Select>

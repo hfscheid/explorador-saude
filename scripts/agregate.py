@@ -63,16 +63,17 @@ def treat(input_folder, year, name):
         if not ok:
             return 'not found', False
         
-        df = pd.read_csv(os.path.join(input_folder, str(year), name), encoding='latin-1', skiprows=8, sep=';').fillna(',0')
+        df = pd.read_csv(os.path.join(input_folder, str(year), name), encoding='latin-1', skiprows=8, sep=';').fillna(
+            ',0').replace('-9999', ',0').replace(-9999, ',0')
         df.head(1)
-        df = df[['Data', 'PRECIPITAÇÃO TOTAL, HORÁRIO (mm)']]
-        df['Data'] = pd.to_datetime(df['Data'])
-        df['PRECIPITAÇÃO TOTAL, HORÁRIO (mm)'] = df['PRECIPITAÇÃO TOTAL, HORÁRIO (mm)'].str.replace(',', '.').astype(float)
-        df = df.groupby('Data').sum().rename(columns={'PRECIPITAÇÃO TOTAL, HORÁRIO (mm)': 'Precipitação'}).reset_index()
-        start_date = pd.Timestamp(f'{year-1}-12-31')
-        df['Semana'] = ((df['Data']-start_date).dt.days//7)+1
+        df = df[[df.columns[0], df.columns[2]]]
+        df[df.columns[0]] = pd.to_datetime(df[df.columns[0]])
+        df.iloc[:, 1] = df.iloc[:, 1].str.replace(',', '.').astype(float)
+        df = df.groupby(df.columns[0]).sum().rename(columns={df.columns[1]: 'Precipitação'}).reset_index()
+        start_date = pd.Timestamp(f'{int(year)-1}-12-31')
+        df['Semana'] = ((df[df.columns[0]]-start_date).dt.days//7)+1
         df['Semana'] = df['Semana'].apply(lambda x: f'Semana {x:02d}')
-        df.pop('Data')
+        df.pop(df.columns[0])
         df = df.groupby('Semana').sum()
         df = df.T
         df['Município'] = mun

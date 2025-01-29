@@ -12,8 +12,10 @@ function TableComponent() {
     table: "dengue",
     tinit: "1",
     tend: "53",
+    year: 2024,
   });
   const weeks = Array.from({ length: 53 }, (_, i) => i + 1);
+  const years = Array.from({ length: 7 }, (_, i) => i + 2017);
 
   useEffect(() => {
     const fetchTables = async () => {
@@ -97,6 +99,19 @@ function TableComponent() {
           {weeks.map((week) => (
             <MenuItem key={week} value={week}>
               {week}
+            </MenuItem>
+          ))}
+        </Select>
+        <Select
+          label="Year"
+          value={tableParams.year}
+          onChange={(e) =>
+            setTableParams({ ...tableParams, year: e.target.value })
+          }
+        >
+          {years.map((year) => (
+            <MenuItem key={year} value={year}            >
+              {year}
             </MenuItem>
           ))}
         </Select>

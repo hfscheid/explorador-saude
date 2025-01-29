@@ -1,6 +1,6 @@
 import api from "./api";
 
-export const fetchChartData = async ({ table, tinit, tend, mun }) => {
+export const fetchChartData = async ({ table, tinit, tend, year, mun }) => {
 try {
   const params = new URLSearchParams();
 
@@ -13,6 +13,7 @@ try {
   params.append("mun", mun);
   params.append("tinit", tinit);
   params.append("tend", tend);
+  params.append("year", year);
 
   const response = await api.get(`/series?${params.toString()}`);
 

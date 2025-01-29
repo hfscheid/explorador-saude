@@ -27,7 +27,7 @@ def unzip_files(folder_path='pluvi', unziped_folder_path='pluvi_unziped', prefix
                     if response:
                         dfs.append(df)
         total = pd.concat(dfs)
-        total.to_csv(os.path.join(data_folder,year,f'pluvio-{year}-municipios.csv'), index=False, encoding='latin-1')
+        total.to_csv(os.path.join(data_folder,year,f'pluvio-municipios.csv'), index=False, encoding='latin-1')
 
 if __name__ == '__main__':
     if len(sys.argv) < 3:
